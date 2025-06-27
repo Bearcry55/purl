@@ -1,0 +1,21 @@
+[package]
+name = "purl"
+version = "0.1.0"
+edition = "2021"
+authors = ["Bearcry55"]
+description = "A private, secure curl-like CLI HTTP client written in Rust"
+license = "MIT"
+repository = "https://github.com/yourusername/purl"
+keywords = ["curl", "cli", "privacy", "tor", "http"]
+categories = ["command-line-utilities", "network-programming"]
+
+[dependencies]
+reqwest = { version = "0.12", features = ["blocking", "rustls-tls", "socks"] }
+clap = { version = "4.5", features = ["derive"] }
+anyhow = "1.0"
+url = "2.5"
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = "symbols"
